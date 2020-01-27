@@ -6,6 +6,8 @@ const forecast = require('./utils/forecast')
 
 
 const app = express()
+const port = process.env.PORT || 3000
+
 
 //define paths for express config
 const publicDirPath = path.join(__dirname, '..', 'public')
@@ -25,14 +27,14 @@ app.use(express.static(publicDirPath))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather App',
-        name: 'Tom'
+        name: 'Thomas T. Koch'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About Me',
-        name: 'Tom'
+        name: 'Thomas T. Koch'
     })
 })
 
@@ -40,7 +42,7 @@ app.get('/help', (req, res) =>{
     res.render('help', {
         title: 'Help Page For You',
         helpText: 'Tom Rules',
-        name: 'Tom'
+        name: 'Thomas T. Koch'
     })
 })
 
@@ -89,7 +91,7 @@ app.get('/products', (req, res) => {
 app.get('/help/*' , (req, res) => {
     res.render('404', {
         title: '404',
-        name: 'Tom',
+        name: 'Thomas T. Koch',
         errorMessage: 'Help article not found.'
     })
 })
@@ -97,11 +99,11 @@ app.get('/help/*' , (req, res) => {
 app.get('*', (req, res) => {
     res.render('404', {
         title: '404',
-        name: 'Tom',
+        name: 'Thomas T. Koch',
         errorMessage: 'Page not found.'
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
 })
